@@ -6,7 +6,7 @@ document.getElementById("registerForm").addEventListener("submit", async (e) => 
     formData.append("email", document.getElementById("email").value);
     formData.append("password", document.getElementById("password").value);
     formData.append("color", document.getElementById("color").value);
-    formData.append("sex", document.getElementById("sex").value);
+    formData.append("Gender", document.getElementById("Gender").value);
     formData.append("photo", document.getElementById("photo").files[0]);
 
     const res = await fetch("http://localhost:5000/api/users/register", {
@@ -15,5 +15,11 @@ document.getElementById("registerForm").addEventListener("submit", async (e) => 
     });
 
     const data = await res.json();
-    document.getElementById("message").innerText = data.message;
+
+    if (res.ok) {
+        alert("Registration successful!");
+        document.getElementById("registerForm").reset();  // clear form
+    } else {
+        alert("Error: " + data.message);
+    }
 });

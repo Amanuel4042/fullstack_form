@@ -5,8 +5,10 @@ const userSchema = new mongoose.Schema({
     email: String,
     password: String,
     color: String,
-    sex: String,
-    photo: String
+    Gender: String,
+    photo: String,
+    lastLoginIP: String,
+     lastLoginAt:Date
 });
 
 export const User = mongoose.model("User", userSchema);
